@@ -1,0 +1,8 @@
+spring:
+    application:
+        name: quartz-spring-boot-starter
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: root
+        username: root
+        url: jdbc:mysql://127.0.0.1:3306/content_center?characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2b8
