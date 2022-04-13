@@ -2,13 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>io.github.bannerxu</groupId>
     <artifactId>quartz-spring-boot-starter</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+
     <modules>
         <module>quartz-core</module>
     </modules>
+
     <name>quartz-spring-boot-starter</name>
     <description>quartz-spring-boot-starter</description>
 
@@ -21,7 +24,12 @@
         <spring-boot.version>2.1.17.RELEASE</spring-boot.version>
     </properties>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 
     <dependencyManagement>
@@ -38,5 +46,23 @@
     </dependencyManagement>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <!-- 删除文件夹 -->
+                        <fileset>
+                            <directory>log</directory>
+                        </fileset>
+
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
