@@ -10,6 +10,7 @@
 
     <modules>
         <module>quartz-core</module>
+        <module>quartz-web</module>
     </modules>
 
     <name>quartz-spring-boot-starter</name>
