@@ -1,4 +1,4 @@
-package io.github.lib.quartz.enums;
+package io.github.lib.quartz.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

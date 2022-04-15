@@ -1,7 +1,7 @@
 package io.github.lib.quartz.model;
 
 
-import io.github.lib.quartz.enums.ScheduleStatus;
+import io.github.lib.quartz.model.enums.ScheduleStatus;
 
 /**
  * 持久化的任务

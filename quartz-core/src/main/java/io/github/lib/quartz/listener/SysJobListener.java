@@ -1,8 +1,8 @@
 package io.github.lib.quartz.listener;
 
 
-import io.github.lib.quartz.core.ScheduleJobLogProcessor;
-import io.github.lib.quartz.event.ScheduleJobEvent;
+import io.github.lib.quartz.core.JobLogProcessor;
+import io.github.lib.quartz.listener.event.ScheduleJobEvent;
 import io.github.lib.quartz.model.IScheduleJob;
 import io.github.lib.quartz.model.ScheduleJobLog;
 import io.github.lib.quartz.util.SpringBeanTaskUtil;
@@ -28,7 +28,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class SysJobListener {
     @Resource
-    private ScheduleJobLogProcessor scheduleJobLogProcessor;
+    private JobLogProcessor jobLogProcessor;
 
     /**
      * 将 Exception 转化为 String
@@ -83,7 +83,7 @@ public class SysJobListener {
             }
             jobLog.setError(exceptionToString);
         } finally {
-            scheduleJobLogProcessor.logProcessor(jobLog);
+            jobLogProcessor.logProcessor(jobLog);
         }
     }
 }

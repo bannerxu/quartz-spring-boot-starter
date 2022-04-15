@@ -11,14 +11,17 @@ import java.lang.reflect.Method;
 
 /**
  * 定时任务spring bean 执行定时任务
- *
- * @author LGH
  */
 @Slf4j
 public class SpringBeanTaskUtil {
 
     public static void invokeMethod(IScheduleJob IScheduleJob) {
-        Object target = SpringContextUtils.getBean(IScheduleJob.getBeanName());
+        Object target;
+        try {
+            target = SpringContextUtils.getBean(Class.forName(IScheduleJob.getBeanName()));
+        } catch (ClassNotFoundException e) {
+            target = SpringContextUtils.getBean(IScheduleJob.getBeanName());
+        }
         try {
             if (StringUtils.isNotBlank(IScheduleJob.getParams())) {
                 Method method = target.getClass().getDeclaredMethod(IScheduleJob.getMethodName(), String.class);

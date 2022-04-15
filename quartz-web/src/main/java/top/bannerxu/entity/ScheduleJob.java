@@ -1,20 +1,21 @@
 package top.bannerxu.entity;
 
-import io.github.lib.quartz.enums.ScheduleStatus;
 import io.github.lib.quartz.model.IScheduleJob;
+import io.github.lib.quartz.model.enums.ScheduleStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleJob implements IScheduleJob {
+public class ScheduleJob implements IScheduleJob, Serializable {
 
     /**
      * 任务id

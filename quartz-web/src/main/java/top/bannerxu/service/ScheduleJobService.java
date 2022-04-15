@@ -1,6 +1,6 @@
 package top.bannerxu.service;
 
-import io.github.lib.quartz.core.ScheduleJobProvider;
+import io.github.lib.quartz.core.JobProvider;
 import io.github.lib.quartz.model.IScheduleJob;
 import org.springframework.stereotype.Service;
 import top.bannerxu.entity.dao.ScheduleJobDao;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ScheduleJobService implements ScheduleJobProvider {
+public class ScheduleJobService implements JobProvider {
 
     @Resource
     private ScheduleJobDao scheduleJobDao;
@@ -22,6 +22,6 @@ public class ScheduleJobService implements ScheduleJobProvider {
 
     @Override
     public List<IScheduleJob> findAllById(List<String> jobIds) {
-        return null;
+        return new ArrayList<>(scheduleJobDao.findByJobIdIn(jobIds));
     }
 }

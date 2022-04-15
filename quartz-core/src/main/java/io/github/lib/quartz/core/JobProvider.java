@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Schedule数据的提供者
  */
-public interface ScheduleJobProvider {
+public interface JobProvider {
     /**
      * 获取全部的任务
      */

@@ -1,0 +1,5 @@
+# Auto Configuration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.lib.quartz.config.QuartzConfiguration,\
+io.github.lib.quartz.config.ScheduleManager,\
+io.github.lib.quartz.config.QuartzPropertiesPostProcessor

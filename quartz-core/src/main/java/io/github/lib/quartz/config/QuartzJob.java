@@ -1,7 +1,7 @@
 package io.github.lib.quartz.config;
 
 
-import io.github.lib.quartz.event.ScheduleJobEvent;
+import io.github.lib.quartz.listener.event.ScheduleJobEvent;
 import io.github.lib.quartz.model.IScheduleJob;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +24,7 @@ public class QuartzJob implements Job {
      * 任务调度参数key
      */
     public static final String JOB_PARAM_KEY = "JOB_PARAM_KEY";
+
     @Resource
     private ApplicationEventPublisher applicationEventPublisher;
 

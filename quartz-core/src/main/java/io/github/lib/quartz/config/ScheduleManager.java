@@ -1,8 +1,8 @@
 package io.github.lib.quartz.config;
 
 
-import io.github.lib.quartz.enums.ScheduleStatus;
 import io.github.lib.quartz.model.IScheduleJob;
+import io.github.lib.quartz.model.enums.ScheduleStatus;
 import lombok.AllArgsConstructor;
 import org.quartz.*;
 import org.springframework.stereotype.Component;
@@ -45,26 +45,26 @@ public class ScheduleManager {
     /**
      * 创建定时任务
      */
-    public void createScheduleJob(IScheduleJob IScheduleJob) {
+    public void createScheduleJob(IScheduleJob iScheduleJob) {
         try {
             //构建job信息
-            JobDetail jobDetail = JobBuilder.newJob(QuartzJob.class).withIdentity(getJobKey(IScheduleJob)).build();
+            JobDetail jobDetail = JobBuilder.newJob(QuartzJob.class).withIdentity(getJobKey(iScheduleJob)).build();
 
             //表达式调度构建器，可以根据scheduleJob修改withMisfireHandling方法，但是使用异步执行定时任务，没必要
-            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(IScheduleJob.getCronExpression())
+            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(iScheduleJob.getCronExpression())
                     .withMisfireHandlingInstructionFireAndProceed();
 
             //按新的cronExpression表达式构建一个新的trigger
-            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(getTriggerKey(IScheduleJob)).withSchedule(scheduleBuilder).build();
+            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(getTriggerKey(iScheduleJob)).withSchedule(scheduleBuilder).build();
 
             //放入参数，运行时的方法可以获取
-            jobDetail.getJobDataMap().put(QuartzJob.JOB_PARAM_KEY, IScheduleJob);
+            jobDetail.getJobDataMap().put(QuartzJob.JOB_PARAM_KEY, iScheduleJob);
 
             scheduler.scheduleJob(jobDetail, trigger);
 
             //暂停任务
-            if (IScheduleJob.getStatus().equals(ScheduleStatus.PAUSE)) {
-                pauseJob(IScheduleJob);
+            if (iScheduleJob.getStatus().equals(ScheduleStatus.PAUSE)) {
+                pauseJob(iScheduleJob);
             }
         } catch (SchedulerException e) {
             throw new RuntimeException("创建定时任务失败", e);

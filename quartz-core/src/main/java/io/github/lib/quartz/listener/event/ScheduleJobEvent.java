@@ -1,4 +1,4 @@
-package io.github.lib.quartz.event;
+package io.github.lib.quartz.listener.event;
 
 import io.github.lib.quartz.model.IScheduleJob;
 import lombok.AllArgsConstructor;
