@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class DefaultScheduleJobLogProcessor implements JobLogProcessor {
+public class ScheduleJobLogProcessor implements JobLogProcessor {
     @Override
     public void logProcessor(ScheduleJobLog scheduleJobLog) {
-        log.info("[MyDefaultScheduleJobLogProcessor] ==> {}", scheduleJobLog);
+        log.info("[ScheduleJobLogProcessor] ==> {}", scheduleJobLog);
     }
 }

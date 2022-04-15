@@ -7,6 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultScheduleJobLogProcessor implements JobLogProcessor {
     @Override
     public void logProcessor(ScheduleJobLog scheduleJobLog) {
-        log.info("[MyDefaultScheduleJobLogProcessor] ==> {}", scheduleJobLog);
+        log.info("[DefaultScheduleJobLogProcessor] ==> {}", scheduleJobLog);
     }
 }
